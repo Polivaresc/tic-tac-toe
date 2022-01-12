@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    font-family: Helvetica, sans-serif;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 20px;
+    padding: 20px;
+    background-color: black;
+}
+
+.cell {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 120px;
+    font-weight: bold;
+    background-color: aquamarine;
+    height: 150px;
+    width: 150px;
+}
+
+.cell:hover {
+    cursor: pointer;
+    background-color: rgb(88, 177, 147);
+}

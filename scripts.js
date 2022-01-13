@@ -33,6 +33,18 @@ const gameboardModule = (() => {
 
 const playerFactory = (name, symbol, color) => {
 
+    // const playerInfo = document.querySelector('#submit-player1')
+    // playerInfo.addEventListener('submit', (e) => {
+    // e.preventDefault
+    // addPlayerInfo()
+    // })
+
+    // const addPlayerInfo = () => {
+    //     const name = document.querySelector('#player1-name').value 
+    //     const color = document.querySelector('#color-select1').value
+    //     return {name, color}
+    // }
+
     const getName = () => name
     const getSymbol = () => symbol
     const getColor = () => color
@@ -46,8 +58,8 @@ const playerFactory = (name, symbol, color) => {
 }
 
 const game = (() => {
-    const player1 = playerFactory('Nyx', 'F', 'pink')
-    const player2 = playerFactory('Seitan', 'O', 'green')
+    const player1 = playerFactory('Nyx', 'X', '#FF3855')
+    const player2 = playerFactory('Seitan', 'O', '#00CC99')
     let currentPlayer = player1
 
     const start = () => {
@@ -111,3 +123,4 @@ const game = (() => {
 })();
 
 game.start()
+

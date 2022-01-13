@@ -20,44 +20,39 @@
 
     <form class="left-elements form">
 
-        <div class="player1-form">
+        <div id="player1-form" class="player1-form">
             <p>Player 1</p>
 
             <label for="player1-name">Name:</label>
-            <input type="text" id="player1-name">
+            <input type="text" id="player1-name" name="player1-name">
 
-            <!-- <div class="color-picker">
+            <label for="color-select1">Color:</label>
+            <input type="hidden" id="player1-color" name="player1-color">
+            <div class="color-picker">
                 <div class="square" style="background-color: #FF00CC;"></div>
                 <div class="square" style="background-color: #FF3855;"></div>
                 <div class="square" style="background-color: #FF6037;"></div>
                 <div class="square" style="background-color: #FFFF66;"></div>
                 <div class="square" style="background-color: #CCFF00;"></div>
-            </div> -->
+            </div>
 
-            <label for="color-select1">Color:</label>
-            <select name="color-select1" id="color-select1">
-                <option value="#FF00CC">Purple Pizzazz</option>
-                <option value="#FF3855">Sizzling Red</option>
-                <option value="#FF6037">Outrageous Orange</option>
-                <option value="#FFFF66">Laser Lemon</option>
-                <option value="#CCFF00">Electric Lime</option>
-            </select>
         </div>
 
-        <div class="player2-form">
+        <div id="player2-form" class="player2-form">
             <p>Player 2</p>
 
             <label for="player2-name">Name:</label>
-            <input type="text" id="player2-name">
+            <input type="text" id="player2-name" name="player2-name">
     
             <label for="color-select2">Color:</label>
-            <select name="color-select2" id="color-select2">
-                <option value="#00CC99">Caribbean Green</option>
-                <option value="#009DC4">Pacific Blue</option>
-                <option value="#0066CC">Navy Blue</option>
-                <option value="#3F26BF">Ultramarine Blue</option>
-                <option value="#391285">Pixie Powder</option>
-            </select>  
+            <input type="hidden" id="player2-color" name="player2-color">
+            <div class="color-picker">
+                <div class="square" style="background-color: #00CC99;"></div>
+                <div class="square" style="background-color: #009DC4;"></div>
+                <div class="square" style="background-color: #0066CC;"></div>
+                <div class="square" style="background-color: #3F26BF;"></div>
+                <div class="square" style="background-color: #391285;"></div>
+            </div>
     
         </div>
            

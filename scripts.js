@@ -31,18 +31,6 @@ const gameboardModule = (() => {
     return {createBoard, addSymbol, getGameboard}
 })();
 
-
-// const playerInfo = document.querySelector('#submit-players')
-//     playerInfo.addEventListener('submit', (e) => {
-//     e.preventDefault
-//     const player1 = {name: document.querySelector('#player1-name').value, color: document.querySelector('#color-select1').value}
-//     const player2 = {name: document.querySelector('#player2-name').value, color: document.querySelector('#color-select2').value}
-
-    
-//     return {player1, player2}
-//     })
-
-
 const playerFactory = (name, color, symbol) => {
 
     const getName = () => name
@@ -59,11 +47,14 @@ const playerFactory = (name, color, symbol) => {
 }
 
 const game = (() => {
-    const player1 = playerFactory('Nyx', '#FF3855', 'X')
-    const player2 = playerFactory('Seitan', '#00CC99', 'O')
-    let currentPlayer = player1
+    let player1
+    let player2
+    let currentPlayer
 
-    const start = () => {
+    const start = (inputPlayer1, inputPlayer2) => {
+        player1 = inputPlayer1
+        player2 = inputPlayer2
+        currentPlayer = player1
         gameboardModule.createBoard()
         announcePlayer()
     }
@@ -123,5 +114,35 @@ const game = (() => {
     
 })();
 
-game.start()
+const player1colors = document.querySelectorAll('#player1-form .color-picker div')
+player1colors.forEach(c => {
+    c.addEventListener('click', () => {
+        document.querySelector('#player1-color').setAttribute('value', c.style['background-color'])
+        document.querySelector('#player1-form .square.selected')?.classList.remove('selected')
+        c.classList.add('selected')
+    })
+})
+
+const player2colors = document.querySelectorAll('#player2-form .color-picker div')
+player2colors.forEach(c => {
+    c.addEventListener('click', () => {
+        document.querySelector('#player2-color').setAttribute('value', c.style['background-color'])
+        document.querySelector('#player2-form .square.selected')?.classList.remove('selected')
+        c.classList.add('selected')
+    })
+})
+
+const playerForm = document.querySelector('form')
+
+playerForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const inputData = new FormData(playerForm);
+
+    const player1 = playerFactory(inputData.get('player1-name'), inputData.get('player1-color'), 'X')
+    const player2 = playerFactory(inputData.get('player2-name'), inputData.get('player2-color'), 'O')
+
+    game.start(player1, player2)
+
+    return null
+})
 

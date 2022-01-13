@@ -31,35 +31,36 @@ const gameboardModule = (() => {
     return {createBoard, addSymbol, getGameboard}
 })();
 
-const playerFactory = (name, symbol, color) => {
 
-    // const playerInfo = document.querySelector('#submit-player1')
-    // playerInfo.addEventListener('submit', (e) => {
-    // e.preventDefault
-    // addPlayerInfo()
-    // })
+// const playerInfo = document.querySelector('#submit-players')
+//     playerInfo.addEventListener('submit', (e) => {
+//     e.preventDefault
+//     const player1 = {name: document.querySelector('#player1-name').value, color: document.querySelector('#color-select1').value}
+//     const player2 = {name: document.querySelector('#player2-name').value, color: document.querySelector('#color-select2').value}
 
-    // const addPlayerInfo = () => {
-    //     const name = document.querySelector('#player1-name').value 
-    //     const color = document.querySelector('#color-select1').value
-    //     return {name, color}
-    // }
+    
+//     return {player1, player2}
+//     })
+
+
+const playerFactory = (name, color, symbol) => {
 
     const getName = () => name
-    const getSymbol = () => symbol
     const getColor = () => color
+    
+    const getSymbol = () => symbol
 
     const win = () => {
-        alert(`Player ${name} is the winner`)
+        alert(`Player ${getName()} is the winner`)
         location.reload()
     }
 
-    return {getName, getSymbol, getColor, win}
+    return {getName, getColor, getSymbol, win}
 }
 
 const game = (() => {
-    const player1 = playerFactory('Nyx', 'X', '#FF3855')
-    const player2 = playerFactory('Seitan', 'O', '#00CC99')
+    const player1 = playerFactory('Nyx', '#FF3855', 'X')
+    const player2 = playerFactory('Seitan', '#00CC99', 'O')
     let currentPlayer = player1
 
     const start = () => {

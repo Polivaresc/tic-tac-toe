@@ -3,7 +3,9 @@ const gameboardModule = (() => {
     const gameboard = []
 
     const createBoard = () => {
-        const container = document.querySelector('.container')
+        const container = document.querySelector('#container')
+        container.innerHTML = ''
+        
         for (i = 0; i<3*3; i++) {
             const domCell = document.createElement('div')
             domCell.setAttribute('id', 'cell-' + i)
@@ -17,6 +19,8 @@ const gameboardModule = (() => {
 
             gameboard.push({id: domCell.id, player: null})
         }
+
+        container.classList.replace('starting', 'container')
     }
 
     const addSymbol = (cell) => {
@@ -40,6 +44,7 @@ const playerFactory = (name, color, symbol) => {
 
     const win = () => {
         alert(`Player ${getName()} is the winner`)
+        document.querySelectorAll('input').forEach(i => i.value = '')
         location.reload()
     }
 
@@ -74,6 +79,7 @@ const game = (() => {
 
             if (!board.find(c => c.player === null)) {
                 alert('Draw')
+                document.querySelectorAll('input').forEach(i => i.value = '')
                 location.reload()
             }
             nextPlayer()
@@ -142,6 +148,10 @@ playerForm.addEventListener('submit', (e) => {
     const player2 = playerFactory(inputData.get('player2-name'), inputData.get('player2-color'), 'O')
 
     game.start(player1, player2)
+
+    document.querySelectorAll('input').forEach(i => i.setAttribute('disabled', true))
+    document.querySelectorAll('.square').forEach(s => s.style.pointerEvents = 'none')
+    document.querySelector('#submit-players').style.display = 'none'
 
     return null
 })

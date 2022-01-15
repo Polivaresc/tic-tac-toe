@@ -18,13 +18,13 @@
 <body>
 
 
-    <form class="left-elements form">
+    <form class="form">
 
         <div id="player1-form" class="player1-form">
             <p>Player 1</p>
 
             <label for="player1-name">Name:</label>
-            <input type="text" id="player1-name" name="player1-name">
+            <input type="text" id="player1-name" name="player1-name" required>
 
             <label for="color-select1">Color:</label>
             <input type="hidden" id="player1-color" name="player1-color">
@@ -42,7 +42,7 @@
             <p>Player 2</p>
 
             <label for="player2-name">Name:</label>
-            <input type="text" id="player2-name" name="player2-name">
+            <input type="text" id="player2-name" name="player2-name" required>
     
             <label for="color-select2">Color:</label>
             <input type="hidden" id="player2-color" name="player2-color">
@@ -61,11 +61,12 @@
 
 
 
-    <div class="right-elements">
+    <div class="game-content">
         <h1>Tic-Tac-Toe</h1>
         <h3 id="player-announce"></h3>
     
-        <div class="container"></div>
+        <div id="container" class="starting"><span style="--i:1">Starting</span> <span style="--i:2">game</span> <span style="--i:3">soon</span> <span style="--i:4">.</span><span style="--i:5">.</span><span style="--i:6">.</span></div>
+        
     </div>
 
 </body>

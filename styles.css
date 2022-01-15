@@ -88,7 +88,7 @@ body {
     font-family: monaco, Consolas, 'Lucida Console', monospace;
     align-self: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-top: 20px;
     padding: 10px 10px;
     max-width: fit-content;
@@ -134,6 +134,7 @@ h1 {
 }
 
 .square {
+    border-radius: 5px;
     height: 25px;
     width: 25px;
 }

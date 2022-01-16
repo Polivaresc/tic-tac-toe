@@ -42,13 +42,7 @@ const playerFactory = (name, color, symbol) => {
     
     const getSymbol = () => symbol
 
-    const win = () => {
-        alert(`Player ${getName()} is the winner`)
-        document.querySelectorAll('input').forEach(i => i.value = '')
-        location.reload()
-    }
-
-    return {getName, getColor, getSymbol, win}
+    return {getName, getColor, getSymbol}
 }
 
 const game = (() => {
@@ -64,6 +58,22 @@ const game = (() => {
         announcePlayer()
     }
 
+    const end = (winner) => {
+        const modal = document.querySelector('.modal')
+        modal.style.display = 'flex'
+
+        if (winner) {
+            document.querySelector('#end-message').textContent = `The winner is ${winner}!`
+        } else {
+            document.querySelector('#end-message').textContent = `It's a tie!`
+        }
+
+        document.querySelector('#ok-button').addEventListener('click', () => {
+            document.querySelectorAll('input').forEach(i => i.value = '')
+            location.reload()
+        }) 
+    }
+
     const mark = (cell) => {
         if (cell.player) {
             alert('That cell is not available')
@@ -73,14 +83,12 @@ const game = (() => {
         cell.player = currentPlayer
         gameboardModule.addSymbol(cell)
         if (checkWinner(currentPlayer)) {
-            currentPlayer.win()
+            end(currentPlayer.getName())
         } else {
             const board = gameboardModule.getGameboard()
 
             if (!board.find(c => c.player === null)) {
-                alert('Draw')
-                document.querySelectorAll('input').forEach(i => i.value = '')
-                location.reload()
+                end()
             }
             nextPlayer()
         }

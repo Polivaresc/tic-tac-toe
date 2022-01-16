@@ -173,6 +173,7 @@ h1 {
 }
 
 #end-message {
-    font-size: x-large;
+    font-size: 40px;
+    text-shadow: white 3px 2px;
     margin-bottom: 15px;
 }
